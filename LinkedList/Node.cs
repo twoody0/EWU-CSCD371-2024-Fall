@@ -41,7 +41,8 @@ public class Node<T> : ICollection<T>
 
     public void Clear()
     {
-        /* We have decided to iterate through the list, clearing each node.
+        /*
+         * We have decided to iterate through the list, clearing each node.
          * This does not necessarily have to be done, as the garbage collector
          * should be able to handle this. However, this is a good practice to
          * ensure that the garbage collector can do its job efficiently.
