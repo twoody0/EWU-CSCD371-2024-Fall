@@ -81,7 +81,7 @@ public class Node<T> : ICollection<T>
 
     public bool Contains(T item)
     {
-        throw new NotImplementedException();
+        return Exists(item);
     }
 
     public void CopyTo(T[] array, int arrayIndex)
