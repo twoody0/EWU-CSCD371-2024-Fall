@@ -237,4 +237,23 @@ public class NodeTests
         // Assert
         Assert.Contains(43, node);
     }
+
+    [Theory]
+    [InlineData(42, 43)]
+    public void GetEnumerator_GivenData_ListIteratesCorrectly<T>(T value1, T value2)
+    {
+        // Arrange
+        Node<T> node = new(value1);
+        node.Append(value2);
+        List<T> values = new();
+
+        // Act
+        foreach (T item in node)
+        {
+            values.Add(item);
+        }
+
+        // Assert
+        Assert.Contains(value2, values);
+    }
 }
