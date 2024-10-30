@@ -2,10 +2,14 @@
 
 namespace CircularLinkedList;
 
-public class Node<T>
+public class Node<T> : ICollection<T>
 {
     public T Value { get; set; }
     public Node<T> Next { get; private set; }
+
+    public int Count => throw new NotImplementedException();
+
+    public bool IsReadOnly => throw new NotImplementedException();
 
     public Node(T value)
     {
@@ -68,5 +72,35 @@ public class Node<T>
             }
         }
         return false;
+    }
+
+    public void Add(T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Contains(T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void CopyTo(T[] array, int arrayIndex)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Remove(T item)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        throw new NotImplementedException();
     }
 }
