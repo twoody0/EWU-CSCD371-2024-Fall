@@ -97,7 +97,13 @@ public class Node<T> : ICollection<T>
 
     public IEnumerator<T> GetEnumerator()
     {
-        throw new NotImplementedException();
+        Node<T> current = this;
+        do
+        {
+            yield return current.Value;
+            current = current.Next;
+        }
+        while (current != this);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
