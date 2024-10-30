@@ -224,4 +224,17 @@ public class NodeTests
         // Assert
         Assert.Equal(node.Next.Value, expectedVal);
     }
+
+    [Fact]
+    public void Contains_Value_HasValue()
+    {
+        // Arrange
+        Node<int> node = new(42);
+
+        // Act
+        node.Append(43);
+
+        // Assert
+        Assert.Contains(43, node);
+    }
 }
