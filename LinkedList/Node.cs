@@ -76,7 +76,7 @@ public class Node<T> : ICollection<T>
 
     public void Add(T item)
     {
-        throw new NotImplementedException();
+        Append(item);
     }
 
     public bool Contains(T item)
