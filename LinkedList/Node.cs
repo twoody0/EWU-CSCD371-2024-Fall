@@ -108,6 +108,6 @@ public class Node<T> : ICollection<T>
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        throw new NotImplementedException();
+        return GetEnumerator();
     }
 }
