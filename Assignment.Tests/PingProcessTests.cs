@@ -58,7 +58,8 @@ public class PingProcessTests
     public void Run_CaptureStdOutput_Success()
     {
         PingResult result = Sut.Run("localhost -c 4");
-        Assert.AreEqual(0, result.ExitCode);
+        //Assert.AreEqual(0, result.ExitCode);
+        AssertValidPingOutput(result);
     }
 
     [TestMethod]
@@ -226,27 +227,28 @@ public class PingProcessTests
         Assert.IsFalse(string.IsNullOrWhiteSpace(result.StdOutput));
     }
 
-    private readonly string PingOutputLikeExpression = @"
+        private readonly string PingOutputLikeExpression = @"
 PING * 56 data bytes
 64 bytes from * (::1): icmp_seq=* ttl=* time=* ms
 64 bytes from * (::1): icmp_seq=* ttl=* time=* ms
 64 bytes from * (::1): icmp_seq=* ttl=* time=* ms
 64 bytes from * (::1): icmp_seq=* ttl=* time=* ms
+
 --- * ping statistics ---
 * packets transmitted, * received, *% packet loss, time *ms
 rtt min/avg/max/mdev = */*/*/* ms
 ".Trim();
-
+    
     private void AssertValidPingOutput(int exitCode, string? stdOutput)
     {
         Assert.IsFalse(string.IsNullOrWhiteSpace(stdOutput));
         stdOutput = WildcardPattern.NormalizeLineEndings(stdOutput!.Trim());
-        Assert.IsTrue(stdOutput?.IsLike(PingOutputLikeExpression) ?? false,
+        Assert.IsTrue(stdOutput?.IsLike(PingOutputLikeExpression)??false,
             $"Output is unexpected: {stdOutput}");
         Assert.AreEqual<int>(0, exitCode);
     }
-
-    private void AssertValidPingOutput(PingResult result)
+    
+     private void AssertValidPingOutput(PingResult result)
     {
         AssertValidPingOutput(result.ExitCode, result.StdOutput);
     }
